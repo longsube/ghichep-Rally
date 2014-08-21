@@ -33,7 +33,32 @@ Sử dụng 2 mô hình:
  
 # 5. Cài đặt Rally-as-an-app
 ## 5.1. Tải về source code của Rally
-     git clone https://git.openstack.org/stackforge/rally
+    git clone https://git.openstack.org/stackforge/rally
 ## 5.2. Cài đặt Rally
     ./rally/install_rally.sh 	 
+# 6. Sử dụng Rally
+## 6.2. Khai báo
+Để chỉ cho Rally biết hệ thống OpenStack nào sẽ được benchmark, ta tạo một file gọi là existing.json
+    {
+    "type": "ExistingCloud",
+    "endpoint": {
+        "auth_url": <KEYSTONE_AUTH_URL>,
+        "username": <ADMIN_USER_NAME>,
+        "password": <ADMIN_PASSWORD>,
+        "tenant_name": <ADMIN_TENANT>
+		}
+    }
+## 6.3. Tạo ra một deployment
+    $ rally deployment create --filename=existing.json --name=existing
++---------------------------+----------------------------+----------+------------------+
+|            uuid           |         created_at         |   name   |      status      |
++---------------------------+----------------------------+----------+------------------+
+|     <Deployment UUID>     | 2014-02-15 22:00:28.270941 | existing | deploy->finished |
++---------------------------+----------------------------+----------+------------------+
+
+## 6.4. Chọn deployment để sử dụng
+    $ rally use deployment --uuid=<Another deployment UUID>
+
+	
+
  
