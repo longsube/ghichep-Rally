@@ -17,6 +17,7 @@ Các mục tiêu mà Rally hướng tới trong các use cases:
 - Tự động cấu hình thông số hoạt động của đám mây:
   - Quyết định tải cuối cùng cho hệ thống cloud cơ bản.
   - Kiểm tra hiệu năng của hệ thống cloud cơ bản ở nhiều mức tải khác nhau.
+  
 # 3. Kiến trúc
 
 Sử dụng 2 mô hình:
@@ -58,6 +59,21 @@ Sử dụng 2 mô hình:
 
 ## 6.4. Chọn deployment để sử dụng
     $ rally use deployment --uuid=<Another deployment UUID>
+	
+## 6.5. Kiểm tra các dịch vụ trên cloud vừa kết nối
+    $ rally deployment check
+    +----------+-----------+-----------+
+    | services |    type   |   status  |
+    +----------+-----------+-----------+
+    |   nova   |  compute  | Available |
+    | cinderv2 |  volumev2 | Available |
+    |  novav3  | computev3 | Available |
+    |    s3    |     s3    | Available |
+    |  glance  |   image   | Available |
+    |  cinder  |   volume  | Available |
+    |   ec2    |    ec2    | Available |
+    | keystone |  identity | Available |
+    +----------+-----------+-----------+
 
 	
 
