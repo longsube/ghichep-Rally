@@ -111,3 +111,55 @@ Rally hỗ trợ 3 cách cài đặt:
  rally deployment use OPS2
  ```
  `rally deployment -h` để xem thêm các tùy chọn
+
+## 2.2. Benchmark OpenStack
+ Rally có sẵn các kịch bản mẫu để benchmark đặt tại thư mục rally.git/samples/tasks/scenarios. Hướng dẫn sau sẽ thử nghiệm benchmark khả năng tạo và xóa máy ảo liên tục của OpenStack.
+
+ - Copy file kịch bản từ thư mục gốc
+ ```
+ cp rally.git/samples/tasks/scenarios/nova/boot-and-delete.yaml /root
+ ```
+
+ - Chỉnh sửa file kịch bản:
+ ```
+ {% set flavor_name = flavor_name or "m1.tiny" %}
+  ---
+  NovaServers.boot_and_delete_server: 
+    -
+    #Khai báo các tham số sử dụng trong kịch bản
+      args:
+        flavor:
+            name: "m1.tiny"
+        image:
+            name: "cirros"
+        auto_assign_nic: true
+    #Khai báo các thông số cho kịch bản
+      runner:
+        type: "constant"
+        #Tổng số lần thực hiện
+        times: 10
+        #Số lần thực hiện đồng thời
+        concurrency: 2
+    #Khai báo ngữ cảnh thực hiện bài test
+      context:
+        users:
+          tenants: 3
+          users_per_tenant: 2
+        network:
+          start_cidr: "10.2.0.0/24"
+          networks_per_tenant: 2
+    #Khai báo SLA cho bài test
+      sla:
+ ```
+
+ - Thực hiện bài test:
+ ```
+ rally task start boot-and-delete.yaml
+ ```
+ - Xuất kết quả sau khi test (sử dụng định dạng html):
+ ```
+ rally task report --out=report_rally.html
+ ```
+
+ - Mở file html bằng trình duyệt và nhận được kết quả đo:
+ ![Rally html](../images/rally_html.jpg)
