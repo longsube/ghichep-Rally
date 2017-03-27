@@ -10,12 +10,12 @@
 ### 1.1 Mô hình mạng
 - Mô hình đầy đủ
 
-![Rally Topo](Rally/images/Rally.jpg)
+![Rally Topo](images/Rally.jpg)
 
 <a name="1.2"> </a> 
 ### 1.2 Các tham số phần cứng đối với các node
 
-![Rally hardware](Rally//images/Cauhinh_phancung.jpg)
+![Rally hardware](images/Cauhinh_phancung.jpg)
 
 ## 2. Cài đặt Rally
 Rally hỗ trợ 3 cách cài đặt:
@@ -78,6 +78,7 @@ Rally hỗ trợ 3 cách cài đặt:
  ```
 
  Kết quả:
+
  +--------------------------------------+----------------------------+------+------------------+--------+
 | uuid                                 | created_at                 | name | status           | active |
 +--------------------------------------+----------------------------+------+------------------+--------+
@@ -90,6 +91,7 @@ Rally hỗ trợ 3 cách cài đặt:
  ```
 
  Kết quả:
+
  +-------------+----------+-----------+
 | services    | type     | status    |
 +-------------+----------+-----------+
