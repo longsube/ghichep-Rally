@@ -107,7 +107,7 @@ Rally hỗ trợ 3 cách cài đặt:
  `rally deployment -h` để xem thêm các tùy chọn
 
 ## 2.2. Benchmark OpenStack
- Rally có sẵn các kịch bản mẫu để benchmark đặt tại thư mục rally.git/samples/tasks/scenarios. Hướng dẫn sau sẽ thử nghiệm benchmark khả năng tạo và xóa máy ảo liên tục của OpenStack.
+ Rally có sẵn các kịch bản mẫu để benchmark được đặt tại thư mục rally.git/samples/tasks/scenarios. Hướng dẫn sau sẽ thử nghiệm benchmark khả năng tạo và xóa máy ảo liên tục của OpenStack.
 
  - Copy file kịch bản từ thư mục gốc
  ```
@@ -156,14 +156,27 @@ Rally hỗ trợ 3 cách cài đặt:
  ```
  rally task start boot-and-delete.yaml
  ```
+ - Xuất ra danh sách các bài test đã thực hiện:
+ ```
+ rally task list
++--------------------------------------+-----------------+----------------------------+----------------+----------+-----+
+| uuid                                 | deployment_name | created_at                 | duration       | status   | tag |
++--------------------------------------+-----------------+----------------------------+----------------+----------+-----+
+| e426736d-b7bf-49f2-b66d-7d59833290fc | HCM             | 2017-03-26 18:12:54.897111 | 0:04:41.435187 | finished |     |
+| 91763487-c410-45fc-8338-40160daeb43b | HCM             | 2017-03-27 08:19:29.306261 | 0:04:36.750297 | finished |     |
++--------------------------------------+-----------------+----------------------------+----------------+----------+-----+
+```
+
  - Xuất kết quả sau khi test (sử dụng định dạng html):
  ```
- rally task report --out=report_rally.html
+ rally task 91763487-c410-45fc-8338-40160daeb43b --out=report_rally.html
  ```
 
  - Mở file html bằng trình duyệt và nhận được kết quả đo:
  ![Rally html](../images/rally_html.jpg)
 
 Tham khảo:
+
 [1] - https://wiki.openstack.org/wiki/Rally/Concepts
-[1] - https://rally.readthedocs.io/en/latest/quick_start/tutorial/step_2_input_task_format.html
+
+[2] - https://rally.readthedocs.io/en/latest/quick_start/tutorial/step_2_input_task_format.html
