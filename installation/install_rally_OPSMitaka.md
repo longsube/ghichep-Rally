@@ -17,7 +17,7 @@
 
 ![Rally hardware](../images/Cauhinh_phancung.jpg)
 
-## 2. Cài đặt Rally
+## 2. Cài đặt trên node Rally
 Rally hỗ trợ 3 cách cài đặt:
  - Cài đặt từ source code
  - Cài đặt với Devstack
@@ -75,10 +75,7 @@ Rally hỗ trợ 3 cách cài đặt:
  - Tạo 1 `deployment` cho hệ thống OpenStack được benchmark
  ```
  rally deployment create --file=existing-keystone-v3.json --name=OPS1
- ```
-
- Kết quả:
- ```sh
+ 
  +--------------------------------------+----------------------------+------+------------------+--------+
 | uuid                                 | created_at                 | name | status           | active |
 +--------------------------------------+----------------------------+------+------------------+--------+
@@ -88,10 +85,7 @@ Rally hỗ trợ 3 cách cài đặt:
  - Kiểm tra việc kết nối:
  ```
  rally deployment check
- ```
-
- Kết quả:
- ```sh
+ 
  +-------------+----------+-----------+
 | services    | type     | status    |
 +-------------+----------+-----------+
