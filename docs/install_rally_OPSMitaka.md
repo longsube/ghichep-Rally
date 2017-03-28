@@ -41,7 +41,7 @@ Rally hỗ trợ 3 cách cài đặt:
  git clone https://github.com/openstack/rally.git
  cd rally.git
  ./install_rally.sh
- #Nếu muốn cài rally trong thư mục chỉ định
+ #Nếu muốn cài rally trong thư mục chỉ định, như một virtual env
  ./install_rally.sh --target /foo/bar
  ```
 
@@ -180,3 +180,5 @@ Tham khảo:
 [1] - https://wiki.openstack.org/wiki/Rally/Concepts
 
 [2] - https://rally.readthedocs.io/en/latest/quick_start/tutorial/step_2_input_task_format.html
+
+[3] - https://docs.openstack.org/developer/performance-docs/test_plans/control_plane/plan.html
