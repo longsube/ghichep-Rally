@@ -127,7 +127,7 @@ Rally hỗ trợ 3 cách cài đặt:
         image:
             name: "cirros"
         auto_assign_nic: true
-    #Khai báo các thông số cho kịch bản
+    #Khai báo loại tải cho kịch bản
       runner:
         type: "constant"
         #Tổng số lần thực hiện
@@ -145,7 +145,13 @@ Rally hỗ trợ 3 cách cài đặt:
     #Khai báo SLA cho bài test
       sla:
  ```
-
+ Đối với `runner`, có thể sử dụng các kiểu:
+  - `constant`: tạo tải bằng cách thực hiện kịch bản test một số lần nhất định, có khả năng chạy song song đa luồng(thông qua trường `concurreny`)
+  - `constant_for_duration`: hoạt động giống `constant`, nhưng sẽ thực hiện test trong một khoảng thời gian nhất định(thông qua trường `duration`) 
+  - `periodic`: thực hiện kịch bản với một khoảng nghĩ giữa 2 lần chạy liên tiếp(thông qua trường `period`)
+  - `serial`: thực hiện test tuần tự qua một số lần nhất định, chạy đơn luồng
+ Để chỉ định thời gian timeout cho từng lần chạy, thêm trường `timeout` vào `runner`.
+ 
  - Thực hiện bài test:
  ```
  rally task start boot-and-delete.yaml
@@ -157,3 +163,7 @@ Rally hỗ trợ 3 cách cài đặt:
 
  - Mở file html bằng trình duyệt và nhận được kết quả đo:
  ![Rally html](../images/rally_html.jpg)
+
+Tham khảo:
+[1] - https://wiki.openstack.org/wiki/Rally/Concepts
+[1] - https://rally.readthedocs.io/en/latest/quick_start/tutorial/step_2_input_task_format.html
